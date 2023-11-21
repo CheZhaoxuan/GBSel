@@ -1,0 +1,21 @@
+Package: GBSel
+Type: Package
+Title: A genomic prediction method with gradient boosting stacking ensemble learning framework
+Version: 0.1.0
+Author: Mengjin Zhu
+Maintainer: Mengjin Zhu <zhumengjin@mail.hzau.edu.cn>
+Description: A ensemble learning framework which combines gradient boosting strategy and stacking ensemble learning. The framework integrates three machine learning methods: Ridge Regression (RR), Kernel Ridge Regression (KRR), and Support Vector Regression (SVR). 
+License: GPL
+Encoding: UTF-8
+LazyData: true
+Imports:
+  reticulate,
+  bigmemory,
+  rMVP,
+  simer,
+  parallel,
+  doParallel,
+  foreach,
+  Matrix,
+  elasticnet
+RoxygenNote: 7.2.3
