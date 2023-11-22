@@ -265,7 +265,7 @@ GBSel <- function(
 		}
 	}
 	
-	print("-------------------------------------> Gathering meta features... -------------------------------->")	
+	print("-------------------------------------> Gathering meta features... --------------------------------->")	
 	##stacking meta learner
 	#上面循环结束，产生新meta变量
 	Metatrain_Ridge <- rbind(newtrain_Ridge[[1]],newtrain_Ridge[[2]],newtrain_Ridge[[3]],newtrain_Ridge[[4]],newtrain_Ridge[[5]])
