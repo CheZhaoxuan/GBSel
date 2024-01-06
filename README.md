@@ -46,10 +46,7 @@ genotype[1:5,1:5]
 |4226  	|2|0|0|2|2|
 |4722 	|2|2|0|2|2|
 |A188   |0|0|0|2|2|
-
-### Genomic relationship matrix
-
-
+- Note: The format is a matrix, and the example genotype shows row and column names.
 
 ## Usage
 ### load dependencies 
