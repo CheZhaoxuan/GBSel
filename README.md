@@ -8,7 +8,8 @@
 ## Installation
 - The latest version:<br>
 ```
-`devtools::install_github("CheZhaoxuan/GBSel")`
+devtools::install_github("CheZhaoxuan/GBSel")
+```
 
 ## Data preparation
 
