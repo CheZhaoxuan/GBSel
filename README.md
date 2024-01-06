@@ -59,7 +59,7 @@ py.lib <- python.env(env="python", env.path=path$python, module.check=TRUE)
 - **Notice**: Note the environment and path of python, and `path` can be flexibly specified according to the  python you use. Python 3.6 or above is recommended.
 
 ### data input
-- We used genomic relatedness as the learning data, and the training set and test set were divided as examples
+- We used genomic relationship as the learning data, and the training set and test set were divided as examples
 ```
 X <- genotype
 X.FR <- Feature.reduce(X = X, method="GRM")
