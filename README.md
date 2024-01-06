@@ -12,9 +12,24 @@ devtools::install_github("CheZhaoxuan/GBSel")
 ```
 
 ## Data preparation
+### Phenotype data
+
+### Genotype data
+
+### Genomic relationship matrix
+
 
 
 ## Usage
+### load dependencies 
+
+
+### start GBSel
+
+
+### show result
+
+
 
 
 
