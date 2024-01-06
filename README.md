@@ -24,13 +24,7 @@ devtools::install_github("xiaolei-lab/rMVP");
 ```
 data(example_dataset)
 head(phenotype,5)
-| Syntax      | Description |
-| ----------- | ----------- |
-| Header      | Title       |
-| Paragraph   | Text        |
-
-
-
+```
 |       |EarHT  |dpoll  |EarDia |
 |:----: |:----: |:----: |:----: |
 |33-16	|64.75  |64.5   |NaN    |
@@ -38,7 +32,7 @@ head(phenotype,5)
 |4226  	|65.50  |59.5   |32.219 |
 |4722 	|81.13  |71.5   |32.421 |
 |A188   |27.50  |62.0   |31.419 |
-```
+
 
 ### Genotype data
 
