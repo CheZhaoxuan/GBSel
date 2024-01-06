@@ -53,11 +53,11 @@ genotype[1:5,1:5]
 - Before running, make sure that the available **numpy** library and **scikit-learn** library in **python** are available
 
 ```
-# 
 path <- reticulate::py_discover_config()
 py.lib <- python.env(env="python", env.path=path$python, module.check=TRUE)	
 
 ```
+- **Notice**: Note the environment and path of python, and `path` can be flexibly specified according to the  python you use. Python 3.6 or above is recommended.
 
 ```
 
