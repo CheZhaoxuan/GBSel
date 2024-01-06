@@ -37,10 +37,15 @@ head(phenotype,5)
 ### Genotype data
 ```
 data(example_dataset)
-
 genotype[1:5,1:5]
 ```
-
+|       |PZB00859.1 |PZA01271.1 |PZA03613.2 |PZA03613.1 | PZA03614.2 |
+|:----: |:----: |:----: |:----: |
+|33-16	|2|0|0|2|2|
+|38-11	|2|2|0|2|2|
+|4226  	|2|0|0|2|2|
+|4722 	|2|2|0|2|2|
+|A188   |0|0|0|2|2|
 
 ### Genomic relationship matrix
 
