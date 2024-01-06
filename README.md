@@ -8,7 +8,17 @@
 ## Installation
 - The latest version:<br>
 ```
+install.packages("devtools")
 devtools::install_github("CheZhaoxuan/GBSel")
+```
+- If the installation fails, we recommend manually installing the dependency package:<br>
+```
+install.packages("bigmemory"); install.packages("reticulate");
+install.packages("parallel"); install.packages("doParallel");
+install.packages("foreach"); install.packages("elasticnet"); 
+install.packages("Matrix"); install.packages("devtools");
+devtools::install_github("xiaolei-lab/SIMER");
+devtools::install_github("xiaolei-lab/rMVP")
 ```
 
 ## Data preparation
