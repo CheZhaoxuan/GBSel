@@ -35,6 +35,12 @@ head(phenotype,5)
 - Note: The format is a matrix, and the example phenotype shows row and column names.
 
 ### Genotype data
+```
+data(example_dataset)
+
+genotype[1:5,1:5]
+```
+
 
 ### Genomic relationship matrix
 
