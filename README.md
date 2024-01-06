@@ -51,12 +51,14 @@ genotype[1:5,1:5]
 ## Usage
 ### load dependencies 
 - Before running, make sure that the available **numpy** library and **scikit-learn** library in **python** are available
-```
-
 
 ```
+# 
 path <- reticulate::py_discover_config()
 py.lib <- python.env(env="python", env.path=path$python, module.check=TRUE)	
+
+```
+
 ```
 
 ### start GBSel
