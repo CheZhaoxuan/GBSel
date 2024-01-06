@@ -32,7 +32,7 @@ head(phenotype,5)
 |4226  	|65.50  |59.5   |32.219 |
 |4722 	|81.13  |71.5   |32.421 |
 |A188   |27.50  |62.0   |31.419 |
-
+- Note: The format is a matrix, and the example phenotype shows row and column names.
 
 ### Genotype data
 
