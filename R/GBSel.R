@@ -33,6 +33,7 @@ GBSel <- function(
 	X_test,
 	nIter=c(10,10,10),
 	fold=5,
+	py.lib=py.lib,
 	Parallel=FALSE,stacking=FALSE){
 	# before run, need train.ML result of SVR, KRR, and Ridge
 	#--------------------------------------------------------------------------------------------------------
@@ -55,8 +56,8 @@ GBSel <- function(
 	print("----------------------------------------< Welcome to GBSel >----------------------------------------")
 	print("--------------------------------------- Environment loading... -------------------------------------")
 	print("-------------------------------> Load sklearn and numpy from python.env --------------------------->")
-	path <- reticulate::py_discover_config()
-	py.lib <- python.env(env="python", env.path=path$python, module.check=TRUE)	
+	#path <- reticulate::py_discover_config()
+	#py.lib <- python.env(env="python", env.path=path$python, module.check=TRUE)	
 	sklearn <- py.lib$sklearn
 	numpy <- py.lib$numpy
 	print("---------------------------------------- Load successfully! ----------------------------------------")
