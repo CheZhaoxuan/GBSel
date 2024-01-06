@@ -13,12 +13,10 @@ devtools::install_github("CheZhaoxuan/GBSel")
 ```
 - If the installation fails, we recommend manually installing the dependency package:<br>
 ```
-install.packages("bigmemory"); install.packages("reticulate");
-install.packages("parallel"); install.packages("doParallel");
-install.packages("foreach"); install.packages("elasticnet"); 
-install.packages("Matrix"); install.packages("devtools");
+install.packages("bigmemory"); install.packages("reticulate");install.packages("parallel"); install.packages("doParallel");install.packages("foreach"); install.packages("elasticnet"); 
+install.packages("Matrix"); 
 devtools::install_github("xiaolei-lab/SIMER");
-devtools::install_github("xiaolei-lab/rMVP")
+devtools::install_github("xiaolei-lab/rMVP");
 ```
 
 ## Data preparation
