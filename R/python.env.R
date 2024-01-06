@@ -33,13 +33,11 @@ python.env <- function(env="python", env.path, module.check=TRUE){
 	if(is.null(reticulate::py_discover_config())){
 		print("Check whether python is installed!")
 	}else{
+		if(env=="python"){reticulate::use_python(env.path)}
 		if(module.check){
 			if(reticulate::py_module_available("sklearn")){print("scikit-learn has been installed.")}else{stop("scikit-learn has not been installed!")}
 			if(reticulate::py_module_available("numpy")){print("numpy has been installed.")}else{stop("numpy has not been installed!")}
 		}
-		if(env=="python"){reticulate::use_python(env.path)}
-		if(env=="conda"){reticulate::use_condaenv(env.path)}
-		if(env=="miniconda"){reticulate::use_miniconda(env.path)}
 		sklearn <- reticulate::import("sklearn")
 		numpy <- reticulate::import("numpy")
 		#assign("sklearn", sklearn, envir = .GlobalEnv)
@@ -47,4 +45,3 @@ python.env <- function(env="python", env.path, module.check=TRUE){
 		return(list(sklearn=sklearn,numpy=numpy))		
 	}
 }
-
