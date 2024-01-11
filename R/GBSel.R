@@ -84,9 +84,9 @@ GBSel <- function(
 	
 	print("-- GBSel starts running... ")
 	print("-> Parameter tuning... ")
-	SVR.fit <- train.ML(y_train=y_train,X_train=X_train,X_test=X_test,method="SVR",py.lib=py.lib)
-	KRR.fit <- train.ML(y_train=y_train,X_train=X_train,X_test=X_test,method="KRR",py.lib=py.lib)
-	RR.fit <- train.ML(y_train=y_train,X_train=X_train,X_test=X_test,method="Ridge",py.lib=py.lib)
+	SVR.fit <- train.ML(y_train=y_train,X_train=X_train,X_test=X_test,method="SVR")
+	KRR.fit <- train.ML(y_train=y_train,X_train=X_train,X_test=X_test,method="KRR")
+	RR.fit <- train.ML(y_train=y_train,X_train=X_train,X_test=X_test,method="Ridge")
 	Best_params <- list(best_params_SVR=SVR.fit$best_params, 
 						best_params_KRR=KRR.fit$best_params, 
 						best_params_Ridge=RR.fit$best_params)
