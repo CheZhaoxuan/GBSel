@@ -48,6 +48,7 @@ GBSel <- function(
 	# X_test: a genotype matrix of type numeric, the verification group(or no phenotype group) required to calculate GEBV
 	# nIter: a vector of number of iterations for three base models, Ridge, SVR, and KRR, in that order
 	# fold: the number of folds of cross-validation at the base layer
+	# py.lib: load python module sklearn and numpy
 	# Parallel: parallel or not
 	# stacking: whether to output the stacking results at the same time
 	#
