@@ -10,6 +10,7 @@ GBSel(
   X_test,
   nIter = c(10, 10, 10),
   fold = 5,
+  py.lib = py.lib,
   Parallel = FALSE,
   stacking = FALSE
 )
@@ -24,6 +25,8 @@ GBSel(
 \item{nIter}{a vector of number of iterations for three base models, Ridge, SVR, and KRR, in that order}
 
 \item{fold}{the number of folds of cross-validation at the base layer}
+
+\item{py.lib}{load python module sklearn and numpy}
 
 \item{Parallel}{parallel or not}
 
@@ -41,6 +44,9 @@ X.FR <- Feature.reduce(X = X, method="GRM")
 y.train <- phenotype[c(1:200),1]
 X.train <- X.FR[c(1:200),]
 X.test <- X.FR[-c(1:200),]
-GBSel.fit <- GBSel(y_train=y.train,X_train=X.train,X_test=X.test,Parallel=FALSE)
+path <- reticulate::py_discover_config()
+py.lib <- python.env(env="python", env.path=path$python, module.check=TRUE)	
+GBSel.fit <- GBSel(y_train=y.train,X_train=X.train,X_test=X.test,py.lib=py.lib,Parallel=FALSE)
 
 }
+
