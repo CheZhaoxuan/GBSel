@@ -8,6 +8,7 @@
 #' @param X_test a genotype matrix of type numeric, the verification group(or no phenotype group) required to calculate GEBV
 #' @param nIter a vector of number of iterations for three base models, Ridge, SVR, and KRR, in that order
 #' @param fold the number of folds of cross-validation at the base layer
+#' @param py.lib load python module sklearn and numpy
 #' @param Parallel parallel or not
 #' @param stacking whether to output the stacking results at the same time
 #' 
