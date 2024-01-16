@@ -15,8 +15,6 @@ devtools::install_github("CheZhaoxuan/GBSel")
 ```
 install.packages("reticulate");install.packages("parallel");install.packages("doParallel");
 install.packages("foreach"); install.packages("elasticnet"); install.packages("Matrix"); 
-devtools::install_github("xiaolei-lab/SIMER");
-devtools::install_github("xiaolei-lab/rMVP");
 ```
 
 ## Data preparation
