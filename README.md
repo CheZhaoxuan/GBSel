@@ -11,6 +11,11 @@
 install.packages("devtools")
 devtools::install_github("CheZhaoxuan/GBSel")
 ```
+- or:<br>
+```
+install.packages("https://github.com/CheZhaoxuan/GBSel/GBSel_0.1.0.tar.gz",repos=NULL)
+```
+
 - If the installation fails, we recommend manually installing the dependency package:<br>
 ```
 install.packages("reticulate");install.packages("parallel");install.packages("doParallel");
