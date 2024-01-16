@@ -11,7 +11,7 @@ Feature.reduce(X, Y = NULL, method = "GRM", dimension = "Ind.num")
 
 \item{Y}{a phenotype vector of type numeric}
 
-\item{method}{the method for reducing the feature; options are GRM, PCA, GWAS(MLM)}
+\item{method}{the method for reducing the feature; options are GRM, PCA}
 
 \item{dimension}{confirm the dimensions after the reduction}
 }

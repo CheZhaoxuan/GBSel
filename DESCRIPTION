@@ -11,8 +11,6 @@ LazyData: true
 Imports:
   reticulate,
   bigmemory,
-  rMVP,
-  simer,
   parallel,
   doParallel,
   foreach,
