@@ -72,9 +72,6 @@ GBSel <- function(
 	if(is.null(y_train)){stop("y_train must be required")}
 	if(!is.numeric(y_train)){stop("y_train must be numeric")}
 	if(!is.vector(y_train)){stop("y_train must be a vector")}
-	if(is.null(y_test)){stop("y_test must be required")}
-	if(!is.numeric(y_test)){stop("y_test must be numeric")}
-	if(!is.vector(y_test)){stop("y_test must be a vector")}
 	if(is.null(X_train)){stop("X_train must be required")}
 	if(!is.numeric(X_train)){stop("X_train must be numeric")}
 	if(!is.matrix(X_train)){stop("X_train must be a matrix")}
