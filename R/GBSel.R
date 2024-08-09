@@ -56,20 +56,25 @@ GBSel <- function(
 	#--------------------------------------------------------------------------------------------------------
 	#Create empty lists to store results   
 	
-	print("<  Welcome to GBSel  >")
-	print("-- Environment loading... ")
-	print("-> Load sklearn and numpy from python.env...")
+	cat("##############################\n")
+	cat("####<  Welcome to GBSel  >####\n")
+	cat("##############################\n")
+	cat("-- Environment loading... \n")
+	cat("-> Load sklearn and numpy from python.env...\n")
 	#path <- reticulate::py_discover_config()
 	#py.lib <- python.env(env="python", env.path=path$python, module.check=TRUE)	
 	sklearn <- py.lib$sklearn
 	numpy <- py.lib$numpy
-	print("-- Load successfully! ")
-	print("----------------------")
+	cat("-- Load successfully! \n")
+	cat("----------------------\n")
 	
-	print("-- Inputdata checking... ")
+	cat("-- Inputdata checking... \n")
 	if(is.null(y_train)){stop("y_train must be required")}
 	if(!is.numeric(y_train)){stop("y_train must be numeric")}
 	if(!is.vector(y_train)){stop("y_train must be a vector")}
+	if(is.null(y_test)){stop("y_test must be required")}
+	if(!is.numeric(y_test)){stop("y_test must be numeric")}
+	if(!is.vector(y_test)){stop("y_test must be a vector")}
 	if(is.null(X_train)){stop("X_train must be required")}
 	if(!is.numeric(X_train)){stop("X_train must be numeric")}
 	if(!is.matrix(X_train)){stop("X_train must be a matrix")}
@@ -80,11 +85,11 @@ GBSel <- function(
 	if(!is.matrix(X_test)){stop("X_test must be a matrix")}
 	if(sum(is.na(X_test)) != 0){stop("NAs are not allowed in X_test")}
 
-	print("-- Checking done! ")
-	print("----------------------")
+	cat("-- Checking done! \n")
+	cat("----------------------\n")
 	
-	print("-- GBSel starts running... ")
-	print("-> Parameter tuning... ")
+	cat("-- GBSel starts running... \n")
+	cat("-> Parameter tuning... \n")
 	SVR.fit <- train.ML(y_train=y_train,X_train=X_train,X_test=X_test,method="SVR",py.lib=py.lib)
 	KRR.fit <- train.ML(y_train=y_train,X_train=X_train,X_test=X_test,method="KRR",py.lib=py.lib)
 	RR.fit <- train.ML(y_train=y_train,X_train=X_train,X_test=X_test,method="Ridge",py.lib=py.lib)
@@ -92,7 +97,7 @@ GBSel <- function(
 						best_params_KRR=KRR.fit$best_params, 
 						best_params_Ridge=RR.fit$best_params)
 						
-	print("-> Training base model... ")
+	cat("-> Training base model... \n")
 	newtrain_Ridge <- vector("list", fold)
 	newtrain_SVR <- vector("list", fold)
 	newtrain_KRR <- vector("list", fold)
@@ -107,15 +112,22 @@ GBSel <- function(
 	
 	##stacking base learners
 	if(Parallel){
-		print("-> Parallel is choosen ")	
+	best_nIters <- vector("list", fold)
+		cat("-> Parallel is choosen \n")	
 		# Set up parallel processing
 		num_cores <- parallel::detectCores()	
-		print(paste0("-> The number of CPU cores: ",num_cores))	
-		if(num_cores <= fold){cl <- parallel::makeCluster(num_cores)}else{cl <- parallel::makeCluster(fold)}
-		print(paste0("-> Using cores: ",cl))
+		cat(paste0("-> The number of CPU cores: ",num_cores,"\n"))	
+		if(num_cores <= fold){
+			cl <- parallel::makeCluster(num_cores)
+			cat(paste0("-> Using cores: ",num_cores,"\n"))
+		}else{
+			cl <- parallel::makeCluster(fold)
+			cat(paste0("-> Using cores: ",fold,"\n"))
+		}
+		
 		doParallel::registerDoParallel(cl)
 		# Define the parallel foreach loop
-		print("-> The parallel foreach loop starts... ")
+		cat("-> The parallel foreach loop starts... \n")
 		Parallel_results <- foreach::foreach(j = 1:fold, .packages = c("foreach", "reticulate", "doParallel")) %dopar% {
 			sklearn <- reticulate::import("sklearn") #加载sklearn
 			numpy <- reticulate::import("numpy") #加载numpy
@@ -186,7 +198,7 @@ GBSel <- function(
 		}
 		#Stop the parallel processing
 		parallel::stopCluster(cl)
-		print("-> End parallel! ")	
+		cat("-> End parallel! \n")	
 		for(j in 1:fold){
 			newtrain_Ridge[[j]] <- Parallel_results[[j]]$T_val_Ridge
 			newtrain_SVR[[j]] <-  Parallel_results[[j]]$T_val_SVR
@@ -269,7 +281,7 @@ GBSel <- function(
 		}
 	}
 	
-	print("-> Gathering meta features... ")	
+	cat("-> Gathering meta features... \n")	
 	##stacking meta learner
 	#上面循环结束，产生新meta变量
 	Metatrain_Ridge <- rbind(newtrain_Ridge[[1]],newtrain_Ridge[[2]],newtrain_Ridge[[3]],newtrain_Ridge[[4]],newtrain_Ridge[[5]])
@@ -308,7 +320,7 @@ GBSel <- function(
 	MX_train <- MX_train[,index]
 	MX_test <- MX_test[,index]
 	
-	print("-> Training meta model... ")	
+	cat("-> Training meta model... \n")	
 	#meta model
 	model <- sklearn$linear_model$Lasso(random_state=as.integer(0))
 	range_alpha <- c(1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1e-0, 5, 10)
@@ -348,12 +360,12 @@ GBSel <- function(
 			MX_Tr_stac <- Tr_stac[,dim(Tr_stac)[2]]
 			MX_Te_stac <- Te_stac[,dim(Te_stac)[2]]
 		}
-		print("-- GBSel run over! ")
-		print("----------------------")
+		cat("-- GBSel run over! \n")
+		cat("----------------------\n")
 		return(list(MX_train=MX_train,MX_test=MX_test,GBSel_PV_tr=MX_Tr,GBSel_PV_te=MX_Te,Stacking_PV_tr=MX_Tr_stac,Stacking_PV_te=MX_Te_stac))
 	}else{
-		print("-- GBSel run over! ")
-		print("----------------------")
+		cat("-- GBSel run over! \n")
+		cat("----------------------\n")
 		return(list(MX_train=MX_train,MX_test=MX_test,GBSel_PV_tr=MX_Tr,GBSel_PV_te=MX_Te))
 	}
 
